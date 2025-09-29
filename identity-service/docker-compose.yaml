@@ -1,0 +1,54 @@
+name: identity-service
+version: '3.8'
+
+services:
+  mysql-db-container:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: identity-service
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "3309:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - identity_network
+
+  redis-container:
+    image: redis:latest
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-data:/data
+    networks:
+      - identity_network
+
+  identity-service:
+    image: identity-service:latest
+    container_name: identity_service_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      DB_URL: jdbc:mysql://mysql-db-container:3306/identity-service
+      DB_USERNAME: admin
+      DB_PASSWORD: 1234
+      REDIS_HOST: redis-container
+      REDIS_PORT: 6379
+      SERVER_PORT: 8081
+      CONTEXT_PATH: /identity
+    depends_on:
+      - mysql-db-container
+      - redis-container
+    networks:
+      - identity_network
+
+networks:
+  identity_network:
+    driver: bridge

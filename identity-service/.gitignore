@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+/mysql_data
+/redis-data
+
 ### STS ###
 .apt_generated
 .classpath
