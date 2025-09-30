@@ -10,8 +10,8 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ApiBaseResponse<T>{
-    int statusCode;
-    String message;
-    T data;
+public class ApiBaseResponse<T> {
+  int statusCode;
+  String message;
+  T result;
 }

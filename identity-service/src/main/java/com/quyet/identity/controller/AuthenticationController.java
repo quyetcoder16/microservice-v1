@@ -6,6 +6,4 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(UriPath.V1 + UriPath.AUTH)
-public class AuthenticationController {
-
-}
+public class AuthenticationController {}

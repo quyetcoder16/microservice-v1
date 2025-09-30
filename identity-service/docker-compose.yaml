@@ -22,6 +22,7 @@ services:
     container_name: redis_container
     ports:
       - "6379:6379"
+    command: redis-server --requirepass RedisPass123
     volumes:
       - ./redis-data:/data
     networks:
@@ -41,6 +42,7 @@ services:
       DB_PASSWORD: 1234
       REDIS_HOST: redis-container
       REDIS_PORT: 6379
+      REDIS_PASSWORD: RedisPass123
       SERVER_PORT: 8081
       CONTEXT_PATH: /identity
     depends_on:

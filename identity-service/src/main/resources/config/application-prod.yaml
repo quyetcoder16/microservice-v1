@@ -11,6 +11,14 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:RedisPass123}
+      database: 0
+      timeout: 60000
+
 
 server:
   port: ${SERVER_PORT:8080}

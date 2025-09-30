@@ -20,30 +20,30 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PROTECTED)
 public class BaseEntity {
-    @CreationTimestamp
-    @Column(name = "created_at", updatable = false)
-    LocalDateTime createdAt;
+  @CreationTimestamp
+  @Column(name = "created_at", updatable = false)
+  LocalDateTime createdAt;
 
-    @UpdateTimestamp
-    @Column(name = "updated_at")
-    LocalDateTime updatedAt;
+  @UpdateTimestamp
+  @Column(name = "updated_at")
+  LocalDateTime updatedAt;
 
-    @CreatedBy
-    @Column(name = "user_created", updatable = false)
-    Long userCreated;  // Lưu user_id thay vì User entity
+  @CreatedBy
+  @Column(name = "user_created", updatable = false)
+  Long userCreated; // Lưu user_id thay vì User entity
 
-    @LastModifiedBy
-    @Column(name = "user_updated")
-    Long userUpdated;
+  @LastModifiedBy
+  @Column(name = "user_updated")
+  Long userUpdated;
 
-    @PrePersist
-    public void prePersist() {
-        this.userCreated = SecurityUtils.getCurrentUserId();
-        this.userUpdated = this.userCreated;
-    }
+  @PrePersist
+  public void prePersist() {
+    this.userCreated = SecurityUtils.getCurrentUserId();
+    this.userUpdated = this.userCreated;
+  }
 
-    @PreUpdate
-    public void preUpdate() {
-        this.userUpdated = SecurityUtils.getCurrentUserId();
-    }
+  @PreUpdate
+  public void preUpdate() {
+    this.userUpdated = SecurityUtils.getCurrentUserId();
+  }
 }
