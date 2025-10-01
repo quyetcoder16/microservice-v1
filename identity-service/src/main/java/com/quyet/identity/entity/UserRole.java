@@ -1,5 +1,6 @@
 package com.quyet.identity.entity;
 
+import com.quyet.identity.entity.keys.UserRoleId;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -11,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@IdClass(UserRoleId.class)
 public class UserRole extends BaseEntity {
     @Id
     @Column(name = "user_id", updatable = false, nullable = false)
