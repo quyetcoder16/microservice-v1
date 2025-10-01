@@ -45,6 +45,7 @@ services:
       REDIS_PASSWORD: RedisPass123
       SERVER_PORT: 8081
       CONTEXT_PATH: /identity
+      ORIGIN_PATTERN: "*"
     depends_on:
       - mysql-db-container
       - redis-container

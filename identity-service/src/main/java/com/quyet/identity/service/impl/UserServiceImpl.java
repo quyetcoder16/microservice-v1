@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
         ApiBaseResponse.<UserCreateResponse>builder()
             .result(
                 UserCreateResponse.builder()
-                    .id(user.getId())
+                    .id(user.getUserId())
                     .email(user.getEmail())
                     .fullName(user.getFullName())
                     .phoneNumber(user.getPhoneNumber())

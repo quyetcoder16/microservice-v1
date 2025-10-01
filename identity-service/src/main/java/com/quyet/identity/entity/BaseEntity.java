@@ -30,11 +30,11 @@ public class BaseEntity {
 
   @CreatedBy
   @Column(name = "user_created", updatable = false)
-  Long userCreated; // Lưu user_id thay vì User entity
+  String userCreated;
 
   @LastModifiedBy
   @Column(name = "user_updated")
-  Long userUpdated;
+  String userUpdated;
 
   @PrePersist
   public void prePersist() {

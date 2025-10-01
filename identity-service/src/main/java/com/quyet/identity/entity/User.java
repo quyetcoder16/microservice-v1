@@ -14,10 +14,15 @@ import lombok.experimental.FieldDefaults;
 public class User extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  String id;
+  @Column(name = "user_id", updatable = false, nullable = false)
+  String userId;
 
+  @Column(name = "username", unique = true)
   String username;
+
+  @Column(name = "email", unique = true)
   String email;
+
   String password;
   String fullName;
   String phoneNumber;
