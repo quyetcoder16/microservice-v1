@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Console Appender với màu sắc (sử dụng %highlight native của Logback) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Pattern native: %highlight cho màu (INFO xanh, ERROR đỏ, v.v.) -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %highlight(%-40.40logger{39}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- RollingFileAppender (không màu, giữ nguyên) -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/identity-service.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/identity-service.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>100MB</totalSizeCap>
+            <maxFileSize>10MB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <!-- Pattern đơn giản cho file (native, không màu) -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %-40.40logger{39} - %msg%n%ex</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger cho package chứa filter -->
+    <logger name="com.quyet.identity" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+    <!-- Debug Logback (tùy chọn, để kiểm tra cấu hình) -->
+    <logger name="ch.qos.logback" level="WARN" />  <!-- Giảm level để tránh spam log -->
+</configuration>

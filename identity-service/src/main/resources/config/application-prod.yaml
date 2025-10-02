@@ -22,16 +22,16 @@ spring:
 logging:
   level:
     root: INFO
+    com.quyet.identity: INFO
   file:
     name: logs/identity-service.log
-  pattern:
-    rolling-file-name: logs/identity-service.%d{yyyy-MM-dd}.%i.log
-  logback:
-    rollingpolicy:
-      max-file-size: 10MB
-      max-history: 30
-      total-size-cap: 100MB
-      file-name-pattern: logs/identity-service.%d{yyyy-MM-dd}.%i.log
+    logback:
+      rollingpolicy:
+        file-name-pattern: logs/identity-service.%d{yyyy-MM-dd}.%i.log
+        max-file-size: 10MB
+        max-history: 30
+        total-size-cap: 100MB
+
 
 
 server:

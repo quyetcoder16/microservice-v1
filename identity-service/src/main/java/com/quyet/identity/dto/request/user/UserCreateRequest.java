@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserCreateRequest {
-    private String username;
     private String email;
     private String password;
     private String fullName;
