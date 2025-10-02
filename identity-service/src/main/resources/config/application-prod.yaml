@@ -19,6 +19,20 @@ spring:
       database: 0
       timeout: 60000
 
+logging:
+  level:
+    root: INFO
+  file:
+    name: logs/identity-service.log
+  pattern:
+    rolling-file-name: logs/identity-service.%d{yyyy-MM-dd}.%i.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 30
+      total-size-cap: 100MB
+      file-name-pattern: logs/identity-service.%d{yyyy-MM-dd}.%i.log
+
 
 server:
   port: ${SERVER_PORT:8080}

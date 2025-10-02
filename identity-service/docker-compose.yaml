@@ -51,6 +51,8 @@ services:
       - redis-container
     networks:
       - identity_network
+    volumes:
+      - ./logs:/app/logs
 
 networks:
   identity_network:
