@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
         userRepository.save(
             User.builder()
                 .email(request.getEmail())
-                .fullName(request.getFullName())
                 .phoneNumber(request.getPhoneNumber())
                 .password(request.getPassword())
                 .build());
@@ -52,7 +51,6 @@ public class UserServiceImpl implements UserService {
                 UserCreateResponse.builder()
                     .id(user.getUserId())
                     .email(user.getEmail())
-                    .fullName(user.getFullName())
                     .phoneNumber(user.getPhoneNumber())
                     .build())
             .build());

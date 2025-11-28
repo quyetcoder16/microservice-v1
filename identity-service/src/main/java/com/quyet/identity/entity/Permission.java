@@ -11,7 +11,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Permission {
+public class Permission extends BaseEntity{
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name = "permission_id", updatable = false, nullable = false)

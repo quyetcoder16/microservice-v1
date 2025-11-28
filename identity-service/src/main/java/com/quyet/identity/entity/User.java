@@ -17,13 +17,23 @@ public class User extends BaseEntity {
   @Column(name = "user_id", updatable = false, nullable = false)
   String userId;
 
-  @Column(name = "username", unique = true)
+  @Column(name = "username", unique = true, nullable = false)
   String username;
 
-  @Column(name = "email", unique = true)
+  @Column(name = "email", unique = true, nullable = false)
   String email;
 
+  @Column(name = "password")
   String password;
-  String fullName;
+
+  @Column(name = "phone_number")
   String phoneNumber;
+
+  @Builder.Default
+  @Column(name = "is_enabled")
+  Boolean isEnabled = false;
+
+  @Builder.Default
+  @Column(name = "is_locked")
+  Boolean isLocked = false;
 }
