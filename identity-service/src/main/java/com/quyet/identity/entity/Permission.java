@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @Table(name = "permissions")
 @Data
@@ -11,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Permission extends BaseEntity{
+public class Permission extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name = "permission_id", updatable = false, nullable = false)
@@ -22,4 +24,7 @@ public class Permission extends BaseEntity{
 
   @Column(name = "permission_description", columnDefinition = "TEXT")
   String permissionDescription;
+
+  @OneToMany(mappedBy = "permission")
+  List<RolePermission> listRolePermission;
 }

@@ -1,4 +1,4 @@
-package com.quyet.identity.common;
+package com.quyet.identity.constants;
 
 public class UriPath {
 

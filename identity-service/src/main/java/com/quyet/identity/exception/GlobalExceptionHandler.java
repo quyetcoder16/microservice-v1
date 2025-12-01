@@ -1,6 +1,6 @@
 package com.quyet.identity.exception;
 
-import com.quyet.identity.common.ApiBaseResponse;
+import com.quyet.identity.dto.ApiBaseResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

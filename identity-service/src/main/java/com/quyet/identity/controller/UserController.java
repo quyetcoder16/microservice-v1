@@ -1,10 +1,11 @@
 package com.quyet.identity.controller;
 
-import com.quyet.identity.common.ApiBaseResponse;
-import com.quyet.identity.common.UriPath;
+import com.quyet.identity.dto.ApiBaseResponse;
+import com.quyet.identity.constants.UriPath;
 import com.quyet.identity.dto.request.user.UserCreateRequest;
 import com.quyet.identity.dto.response.user.UserCreateResponse;
 import com.quyet.identity.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -22,9 +23,9 @@ public class UserController {
 
   UserService userService;
 
-  @PostMapping
+  @PostMapping("/register")
   public ResponseEntity<ApiBaseResponse<UserCreateResponse>> createUser(
-      @RequestBody UserCreateRequest userCreateRequest) {
+      @Valid @RequestBody UserCreateRequest userCreateRequest) {
     return userService.createUser(userCreateRequest);
   }
 }

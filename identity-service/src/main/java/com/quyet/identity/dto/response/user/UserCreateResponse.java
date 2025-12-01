@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserCreateResponse {
-  private String id;
+  private String userId;
+  private String userName;
   private String email;
-  private String fullName;
   private String phoneNumber;
 }

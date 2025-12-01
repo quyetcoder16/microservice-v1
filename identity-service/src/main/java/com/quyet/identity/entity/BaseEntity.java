@@ -28,22 +28,32 @@ public class BaseEntity {
   @Column(name = "updated_at")
   LocalDateTime updatedAt;
 
-  @CreatedBy
   @Column(name = "user_created", updatable = false)
   String userCreated;
 
-  @LastModifiedBy
   @Column(name = "user_updated")
   String userUpdated;
 
   @PrePersist
   public void prePersist() {
-    this.userCreated = SecurityUtils.getCurrentUserId();
-    this.userUpdated = this.userCreated;
+    String currentUser = SecurityUtils.getCurrentUserId();
+    if (isValidId(currentUser)) { // check null/anonymous
+      this.userCreated = currentUser;
+      this.userUpdated = currentUser;
+    }
   }
 
   @PreUpdate
   public void preUpdate() {
-    this.userUpdated = SecurityUtils.getCurrentUserId();
+    String currentUserId = SecurityUtils.getCurrentUserId();
+    if (isValidId(currentUserId)) {
+      this.userUpdated = currentUserId;
+    }
+  }
+
+  private boolean isValidId(String id) {
+    // 1. Phải khác null
+    // 2. Phải khác "anonymousUser" (User mặc định của Spring Security khi chưa login)
+    return id != null && !id.equals("anonymousUser");
   }
 }

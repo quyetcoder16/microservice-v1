@@ -39,5 +39,12 @@ server:
   servlet:
     context-path: ${CONTEXT_PATH:/identity}
 
+# Custom application configurations
+
 app-config:
   origin-pattern: ${ORIGIN_PATTERN:http://localhost:3000}
+  jwt:
+    access-token-secret: ${ACCESS_TOKEN_SECRET:pygYtfMekXKfduDf6xxbP9eFVwZjDvBnGQBSf1Mmv6fPJN6Br4z0S4zaTnnYc5Vz} # 64 characters
+    refresh-token-secret: ${REFRESH_TOKEN_SECRET:J8SLuELqVehCBNXL3tcZG8NRiL8yxRjZ3ySwyXZB6KfyR8EGBmVYKqNWjQncZn0w} # 64 characters
+    access-token-expiration-ms: ${ACCESS_TOKEN_EXPIRATION_MS:900000} # 15 minutes
+    refresh-token-expiration-ms: ${REFRESH_TOKEN_EXPIRATION_MS:604800000} # 7 days

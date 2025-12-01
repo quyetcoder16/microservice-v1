@@ -1,6 +1,6 @@
 package com.quyet.identity.configuration;
 
-import com.quyet.identity.common.UriPath;
+import com.quyet.identity.constants.UriPath;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -42,7 +42,7 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.POST, publicPostEndpoints)
                     .permitAll()
                     .anyRequest()
-                    .authenticated());
+                    .permitAll());
     http.csrf(csrf -> csrf.disable());
 
     return http.build();

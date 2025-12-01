@@ -21,4 +21,20 @@ public class RolePermission extends BaseEntity {
   @Id
   @Column(name = "permission_id", updatable = false, nullable = false)
   String permissionId;
+
+  @ManyToOne
+  @JoinColumn(
+      name = "role_id",
+      referencedColumnName = "role_id",
+      insertable = false,
+      updatable = false)
+  Role role;
+
+  @ManyToOne
+  @JoinColumn(
+      name = "permission_id",
+      referencedColumnName = "permission_id",
+      insertable = false,
+      updatable = false)
+  Permission permission;
 }

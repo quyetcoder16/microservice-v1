@@ -1,4 +1,4 @@
-package com.quyet.identity.common;
+package com.quyet.identity.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

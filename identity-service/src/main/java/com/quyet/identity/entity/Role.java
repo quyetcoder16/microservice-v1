@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @Table(name = "roles")
 @Data
@@ -22,4 +24,10 @@ public class Role extends BaseEntity {
 
   @Column(name = "role_description", columnDefinition = "TEXT")
   String roleDescription;
+
+  @OneToMany(mappedBy = "role")
+  List<UserRole> listUserRole;
+
+  @OneToMany(mappedBy = "role")
+  List<RolePermission> listRolePermission;
 }
